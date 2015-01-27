@@ -1,0 +1,6 @@
+Flask
+pytest
+pytest-flask
+pytest-mozwebqa
+pytest-xdist
+unittestzero
