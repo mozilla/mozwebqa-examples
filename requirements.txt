@@ -4,4 +4,3 @@ pytest-flask
 pytest-mozwebqa
 pytest-variables
 pytest-xdist
-unittestzero

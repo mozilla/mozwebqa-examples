@@ -3,7 +3,6 @@
 # You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import pytest
-from unittestzero import Assert
 
 from pages.login import LoginPage
 from pages.messages import MessagesPage
@@ -16,7 +15,7 @@ def test_login(mozwebqa, variables):
     login_page = LoginPage(mozwebqa)
     login_page.open()
     messages_page = login_page.login(variables['username'], variables['password'])
-    Assert.equal(messages_page.notification, 'You were logged in')
+    assert messages_page.notification == 'You were logged in'
 
 
 def test_invalid_username(mozwebqa, variables):
@@ -24,7 +23,7 @@ def test_invalid_username(mozwebqa, variables):
     login_page = LoginPage(mozwebqa)
     login_page.open()
     login_page.login('invalid', variables['password'])
-    Assert.equal(login_page.error, 'Error: Invalid username')
+    assert login_page.error == 'Error: Invalid username'
 
 
 def test_invalid_password(mozwebqa, variables):
@@ -32,7 +31,7 @@ def test_invalid_password(mozwebqa, variables):
     login_page = LoginPage(mozwebqa)
     login_page.open()
     login_page.login(variables['username'], 'invalid')
-    Assert.equal(login_page.error, 'Error: Invalid password')
+    assert login_page.error == 'Error: Invalid password'
 
 
 def test_logout(mozwebqa, variables):
@@ -41,4 +40,4 @@ def test_logout(mozwebqa, variables):
     messages_page.open()
     messages_page.login(variables['username'], variables['password'])
     messages_page.logout()
-    Assert.equal(messages_page.notification, 'You were logged out')
+    assert messages_page.notification == 'You were logged out'
