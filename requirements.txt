@@ -1,6 +1,6 @@
 Flask
 pytest
 pytest-flask
-pytest-mozwebqa
 pytest-variables
 pytest-xdist
+pytest-selenium

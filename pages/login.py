@@ -2,7 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at http://mozilla.org/MPL/2.0/.
 
-from flask import url_for
+from urlparse import urljoin
+
 from selenium.webdriver.common.by import By
 
 from messages import MessagesPage
@@ -27,10 +28,10 @@ class LoginPage(Base):
         self.type_username(username)
         self.type_password(password)
         self.click_login()
-        return MessagesPage(self.testsetup)
+        return MessagesPage(self.base_url, self.selenium)
 
     def open(self):
-        self.selenium.get(url_for('login', _external=True))
+        self.selenium.get(urljoin(self.base_url, 'login'))
 
     def type_password(self, value):
         self.selenium.find_element(*self._password_locator).send_keys(value)

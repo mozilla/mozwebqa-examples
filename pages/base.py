@@ -16,7 +16,7 @@ class Base(Page):
     def click_login(self):
         self.selenium.find_element(*self._login_locator).click()
         from pages.login import LoginPage
-        return LoginPage(self.testsetup)
+        return LoginPage(self.base_url, self.selenium)
 
     def click_logout(self):
         self.selenium.find_element(*self._logout_locator).click()

@@ -5,6 +5,6 @@
 
 class Page(object):
 
-    def __init__(self, testsetup):
-        self.testsetup = testsetup
-        self.selenium = testsetup.selenium
+    def __init__(self, base_url, selenium):
+        self.base_url = base_url
+        self.selenium = selenium
