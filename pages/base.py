@@ -21,7 +21,7 @@ class Base(Page):
     def click_logout(self):
         self.selenium.find_element(*self._logout_locator).click()
 
-    def login(self, username=None, password=None):
+    def login(self, username, password):
         login_page = self.click_login()
         return login_page.login(username, password)
 
