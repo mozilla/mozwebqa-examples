@@ -10,11 +10,11 @@ from pages.messages import MessagesPage
 
 class TestMessages:
 
-    def test_create_message(self, mozwebqa):
+    def test_create_message(self, mozwebqa, variables):
         """Create a message"""
         messages_page = MessagesPage(mozwebqa)
         messages_page.open()
-        messages_page.login('admin', 'default')
+        messages_page.login(variables['username'], variables['password'])
         messages_page.create_message('<Hello>', '<strong>HTML</strong> allowed here')
         Assert.equal(messages_page.notification, 'New entry was successfully posted')
         Assert.equal(len(messages_page.messages), 1)

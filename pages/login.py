@@ -23,10 +23,7 @@ class LoginPage(Base):
     def error(self):
         return self.selenium.find_element(*self._error_locator).text
 
-    def login(self, username=None, password=None):
-        credentials = self.testsetup.credentials
-        username = credentials.get('username') if username is None else username
-        password = credentials.get('password') if password is None else password
+    def login(self, username, password):
         self.type_username(username)
         self.type_password(password)
         self.click_login()
