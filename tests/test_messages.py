@@ -9,8 +9,7 @@ from pages.messages import MessagesPage
 
 def test_create_message(base_url, selenium, variables):
     """Create a message"""
-    messages_page = MessagesPage(base_url, selenium)
-    messages_page.open()
+    messages_page = MessagesPage(base_url, selenium).open()
     messages_page.login(variables['username'], variables['password'])
     messages_page.create_message('<Hello>', '<strong>HTML</strong> allowed here')
     assert messages_page.notification == 'New entry was successfully posted'
@@ -22,6 +21,5 @@ def test_create_message(base_url, selenium, variables):
 @pytest.mark.nondestructive
 def test_empty(base_url, selenium):
     """Start with an empty list of messages"""
-    messages_page = MessagesPage(base_url, selenium)
-    messages_page.open()
+    messages_page = MessagesPage(base_url, selenium).open()
     assert messages_page.messages == []

@@ -2,8 +2,6 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at http://mozilla.org/MPL/2.0/.
 
-from urlparse import urljoin
-
 from selenium.webdriver.common.by import By
 
 from messages import MessagesPage
@@ -11,6 +9,8 @@ from base import Base
 
 
 class LoginPage(Base):
+
+    _url = '{base_url}/login'
 
     _error_locator = (By.CLASS_NAME, 'error')
     _password_locator = (By.ID, 'password')
@@ -29,9 +29,6 @@ class LoginPage(Base):
         self.type_password(password)
         self.click_login()
         return MessagesPage(self.base_url, self.selenium)
-
-    def open(self):
-        self.selenium.get(urljoin(self.base_url, 'login'))
 
     def type_password(self, value):
         self.selenium.find_element(*self._password_locator).send_keys(value)
