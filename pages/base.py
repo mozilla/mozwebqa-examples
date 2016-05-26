@@ -4,7 +4,7 @@
 
 from selenium.webdriver.common.by import By
 
-from page import Page
+from pypom import Page
 
 
 class Base(Page):
@@ -14,12 +14,12 @@ class Base(Page):
     _notification_locator = (By.CLASS_NAME, 'flash')
 
     def click_login(self):
-        self.selenium.find_element(*self._login_locator).click()
+        self.find_element(*self._login_locator).click()
         from pages.login import LoginPage
-        return LoginPage(self.base_url, self.selenium)
+        return LoginPage(self.selenium, self.base_url)
 
     def click_logout(self):
-        self.selenium.find_element(*self._logout_locator).click()
+        self.find_element(*self._logout_locator).click()
 
     def login(self, username, password):
         login_page = self.click_login()
@@ -30,4 +30,4 @@ class Base(Page):
 
     @property
     def notification(self):
-        return self.selenium.find_element(*self._notification_locator).text
+        return self.find_element(*self._notification_locator).text
