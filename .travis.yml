@@ -7,7 +7,7 @@ before_install:
   - "sh -e /etc/init.d/xvfb start"
 install:
   - "pip install flake8"
-  - "pip install -r requirements.txt"
+  - "pip install -Ur requirements.txt"
 before_script: "flake8 ."
 script: "py.test -v --driver Firefox --variables variables.json tests"
 notifications:
