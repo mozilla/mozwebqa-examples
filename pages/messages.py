@@ -2,10 +2,10 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at http://mozilla.org/MPL/2.0/.
 
+from pypom import Region
 from selenium.webdriver.common.by import By
 
 from base import Base
-from page import PageRegion
 
 
 class MessagesPage(Base):
@@ -21,28 +21,28 @@ class MessagesPage(Base):
         self.click_share()
 
     def click_share(self):
-        self.selenium.find_element(*self._share_locator).click()
+        self.find_element(*self._share_locator).click()
 
     @property
     def messages(self):
-        return [self.Message(self.selenium, el) for el in
-                self.selenium.find_elements(*self._messages_locator)]
+        return [self.Message(self, el) for el in
+                self.find_elements(*self._messages_locator)]
 
     def type_text(self, value):
-        self.selenium.find_element(*self._text_locator).send_keys(value)
+        self.find_element(*self._text_locator).send_keys(value)
 
     def type_title(self, value):
-        self.selenium.find_element(*self._title_locator).send_keys(value)
+        self.find_element(*self._title_locator).send_keys(value)
 
-    class Message(PageRegion):
+    class Message(Region):
 
         _title_locator = (By.TAG_NAME, 'h2')
         _text_locator = (By.CLASS_NAME, 'text')
 
         @property
         def text(self):
-            return self.root.find_element(*self._text_locator).text
+            return self.find_element(*self._text_locator).text
 
         @property
         def title(self):
-            return self.root.find_element(*self._title_locator).text
+            return self.find_element(*self._title_locator).text
