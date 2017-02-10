@@ -1,7 +1,6 @@
 # Mozilla Web QA Examples
 
-This repository contains examples of test automation from Mozilla's Web QA team.
+This repository contains examples of test automation which were once used as templates for Mozilla's Web QA Selenium WebDriver test automation.
 
-[![Travis](https://img.shields.io/travis/mozilla/mozwebqa-examples.svg)](https://travis-ci.org/mozilla/mozwebqa-examples/)
-[![Issues](https://img.shields.io/github/issues-raw/mozilla/mozwebqa-examples.svg)](https://github.com/mozilla/mozwebqa-examples/issues)
-[![Requirements](https://img.shields.io/requires/github/mozilla/mozwebqa-examples.svg)](https://requires.io/github/mozilla/mozwebqa-examples/requirements/?branch=master)
+## This repository is no longer actively maintained
+In its place, we encourage you to take a look at using [cookiecutter-pytest-selenium](https://github.com/davehunt/cookiecutter-pytest-selenium) as a more-useful and much-more recent replacement.
